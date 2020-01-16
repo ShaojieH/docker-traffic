@@ -1,5 +1,5 @@
 from flask import Flask
-from scheduler import start_scheduler
+from scheduler import prepare
 from data.docker import dockerData
 from util.decorator import api_response
 
@@ -24,5 +24,5 @@ def docker_networks():
 
 
 if __name__ == '__main__':
-    start_scheduler()
+    prepare()
     app.run(debug=True, use_reloader=False)
