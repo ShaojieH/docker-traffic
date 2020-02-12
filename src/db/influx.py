@@ -6,18 +6,18 @@ client = InfluxDBClient(host='localhost', port=8086, username='root', password='
                         database=influxdb_database_name)
 
 
-def save_bandwhich_connection_data(data):
+def save_bandwhich_connection_data(dst, down, time):
     json_body = [
         {
             "measurement": influxdb_connection,
-            # "time": int(data['time']),
+            "time": int(time),
             "tags": {
-                "device": data['device'],
-                "dst": data['dst'],
-                "protocol": data['protocol'],
+                # "device": data['device'],
+                "dst": dst,
+                # "protocol": data['protocol'],
             },
             "fields": {
-                "down": int(data['down']),
+                "down": down,
             }
         }
     ]
@@ -26,5 +26,6 @@ def save_bandwhich_connection_data(data):
 
 
 if __name__ == '__main__':
+    # save_bandwhich_connection_data('172.18.0.5', 0, '1581494417')
     result = client.query("select * from {0};".format(influxdb_connection))
     print(result)

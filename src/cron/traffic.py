@@ -28,6 +28,3 @@ def do_start_bandwhich_monitor():
             traffic_log_type, traffic_info = match_bandwhich_output(output.decode("utf-8"))
             if traffic_log_type == Traffic_log_type.BANDWHICH_CONNECTION:
                 handle_bandwhich(traffic_info)
-
-if __name__ == '__main__':
-    do_start_bandwhich_monitor()
