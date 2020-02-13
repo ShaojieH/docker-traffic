@@ -1,0 +1,20 @@
+<!doctype html>
+<title>Container info</title>
+{% for key, value in container_info.items() %}
+  {{key}}:<br>{{value['interface']}}<br>{{value['rule']}}
+  <form action="/set_container_rule" method="post">
+    rate: <input type="number" name="rate" >
+    burst: <input type="number" name="burst" >
+    latency: <input type="number" name="latency" >
+    <input type="hidden" name="container_id" value={{key}}>
+    <input type="hidden" name="interface" value={{value['interface']}}>
+    <br>
+    <input type="submit" value="set" >
+  </form>
+  <form action="/reset_container_rule" method="post">
+    <input type="hidden" name="interface" value={{value['interface']}}>
+    <button type="submit">reset</button>
+  </form>
+<br>
+{% endfor %}
+

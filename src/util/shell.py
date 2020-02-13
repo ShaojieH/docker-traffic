@@ -21,6 +21,16 @@ def sudo_run_and_get_result(command):
     return process.stdout.decode("utf-8")
 
 
+def sudo_run_and_get_result_or_error(command):
+    echo = subprocess.Popen(['echo', sudoPassword], stdout=subprocess.PIPE)
+    process = subprocess.run(['sudo', '-S'] + command.split(), stdin=echo.stdout, capture_output=True)
+    result = process.stdout.decode("utf-8")
+    if len(result) == 0:
+        error = process.stderr.decode("utf-8")
+        return error
+    return result
+
+
 def sudo_run_and_get_realtime_result(command):
     echo = subprocess.Popen(['echo', sudoPassword], stdout=subprocess.PIPE)
     process = subprocess.Popen(['sudo', '-S'] + shlex.split(command), stdin=echo.stdout, stdout=subprocess.PIPE)
