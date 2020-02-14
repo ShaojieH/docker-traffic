@@ -9,18 +9,6 @@ from flask import request
 app = Flask(__name__)
 
 
-@app.route('/container_ids', methods=['GET'])
-@api_response
-def get_container_ids():
-    return dockerData.container_ids
-
-
-@app.route('/network_ids', methods=['GET'])
-@api_response
-def get_network_ids():
-    return dockerData.network_ids
-
-
 @app.route('/container_info', methods=['GET'])
 @app.route('/', methods=['GET'])
 def get_container_info():
@@ -47,6 +35,7 @@ def set_container_rule():
     rate = request.form['rate']
     burst = request.form['burst']
     latency = request.form['latency']
+    reset(interface) # first reset anyway
     limit(interface=interface, rate=rate+"Mbit", burst=burst+"kb", latency=latency+"ms")
     return redirect('/')
 
