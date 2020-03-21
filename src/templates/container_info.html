@@ -1,23 +1,45 @@
 <!doctype html>
 <title>Container info</title>
 {% for key, value in container_info.items() %}
-  {{key}}:<br>{{value['interface']}}<br>{{value['rule']}}
-  <form action="/set_container_rule" method="post">
+{{key}}:<br>{{value['interface']}}<br>{{value['rule']}}<br>{{value['ip']}}<br>{{value['name']}}
+<form action="/set_container_rule" method="post">
     <b>rate</b>: <input type="number" name="rate">Mbit
-    <b>burst</b>: <input type="number" name="burst" >kb
-    <b>latency</b>: <input type="number" name="latency" >ms
+    <b>burst</b>: <input type="number" name="burst">kb
+    <b>latency</b>: <input type="number" name="latency">ms
     <input type="hidden" name="container_id" value={{key}}>
     <input type="hidden" name="interface" value={{value['interface']}}>
     <br>
-    <input type="submit" value="set" >
-  </form>
-  <form action="/reset_container_rule" method="post">
+    <input type="submit" value="set">
+</form>
+<form action="/reset_container_rule" method="post">
     <input type="hidden" name="interface" value={{value['interface']}}>
     <button type="submit">reset</button>
-  </form>
+</form>
 <br>
 {% endfor %}
 
+Add rule
+<form action="/add_container_rule" method="post">
+    <b>src</b>
+    <select id="src_container_id" name="src_container_id">
+        {% for key, value in container_info.items() %}
+        <option value={{key}}>{{value['name']}}</option>
+        {% endfor %}
+    </select>
+    <b>dst</b>
+    <select id="dst_container_id" name="dst_container_id">
+        {% for key, value in container_info.items() %}
+        <option value={{key}}>{{value['name']}}</option>
+        {% endfor %}
+    </select>
+    <b>limit</b>: <input type="number" name="limit">kB
+    <br>
+    <input type="submit">
+</form>
+
+
 <style>
-  input[type="number"] {width: 80px;}
+    input[type="number"] {
+        width: 80px;
+    }
 </style>

@@ -1,8 +1,8 @@
 from influxdb import InfluxDBClient
 
-from config import influxdb_database_name, influxdb_connection
+from config import influxdb_database_name, influxdb_connection, influxdb_address
 
-client = InfluxDBClient(host='localhost', port=8086, username='root', password='root',
+client = InfluxDBClient(host=influxdb_address, port=8086, username='root', password='root',
                         database=influxdb_database_name)
 
 
