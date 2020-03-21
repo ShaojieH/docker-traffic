@@ -5,8 +5,25 @@ from data.docker import dockerData
 from scheduler import prepare
 from shell.docker import get_container_interface, get_container_ip2, get_container_name
 from shell.tc import get_current_rule, reset, limit, limit_by_src_and_dst
+from util.decorator import api_response
 
 app = Flask(__name__)
+
+
+@api_response
+@app.route('/api/container_info', methods=['GET'])
+def api_get_container_info():
+    container_info = {}
+    for container_id in dockerData.container_ids:
+        interface = get_container_interface(container_id)
+        ip = get_container_ip2(container_id)
+        name = get_container_name(container_id)
+        container_info[container_id] = {
+            "interface": interface,
+            "ip": ip,
+            "name": name,
+        }
+    return container_info
 
 
 @app.route('/container_info', methods=['GET'])
@@ -52,9 +69,11 @@ def add_container_rule():
     limit_by_src_and_dst(src_container_id=src_container_id, dst_container_id=dst_container_id, limit=limit)
     return redirect('/')
 
-@app.route('add_container_rule', methods=['GET'])
+
+@app.route('/graph', methods=['GET'])
 def graph():
-    return render_template('graph.html',)
+    return render_template('graph.html')
+
 
 if __name__ == '__main__':
     prepare()

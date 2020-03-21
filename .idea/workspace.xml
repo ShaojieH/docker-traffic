@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e959c6d-aedc-4775-868d-850cc8878552" name="Default Changelist" comment="add screenshot">
-      <change afterPath="$PROJECT_DIR$/src/shell/get_ip.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shell/tc_by_ip.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shell/tc_by_ip_2.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/influx.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/influx.py" afterDir="false" />
+    <list default="true" id="5e959c6d-aedc-4775-868d-850cc8878552" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/graph.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/templates/graph.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/docker-traffic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/docker-traffic.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shell/bandwhich.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell/bandwhich.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shell/docker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell/docker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shell/tc.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell/tc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/container_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/container_info.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,10 +61,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.flask.configuration.FlaskConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/templates" />
       <recent name="$PROJECT_DIR$/src" />
@@ -224,7 +224,7 @@
       <workItem from="1581482919592" duration="294000" />
       <workItem from="1581564045772" duration="14057000" />
       <workItem from="1581652587224" duration="5495000" />
-      <workItem from="1584778266463" duration="12722000" />
+      <workItem from="1584778266463" duration="17963000" />
     </task>
     <task id="LOCAL-00001" summary="add bandwhich">
       <created>1579012426597</created>
@@ -289,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581679401831</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add tc for controlling traffic between containers">
+      <created>1584805080429</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1584805080429</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +312,8 @@
     <MESSAGE value="add control page" />
     <MESSAGE value="beautify html" />
     <MESSAGE value="add screenshot" />
-    <option name="LAST_COMMIT_MESSAGE" value="add screenshot" />
+    <MESSAGE value="add tc for controlling traffic between containers" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tc for controlling traffic between containers" />
   </component>
   <component name="WindowStateProjectService">
     <state x="590" y="215" width="800" height="684" key="#Plugins" timestamp="1579013761959">
@@ -324,30 +332,30 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="696" y="350" width="588" height="413" key="#com.intellij.fileTypes.FileTypeChooser/70.27.1850.1053@70.27.1850.1053" timestamp="1579013173873" />
-    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2" timestamp="1584780063929">
+    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2" timestamp="1584805078151">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1584780063929" />
+    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1584805078151" />
     <state x="763" y="294" width="453" height="525" key="FileChooserDialogImpl" timestamp="1581581366602">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="763" y="294" width="453" height="525" key="FileChooserDialogImpl/70.27.1850.1053@70.27.1850.1053" timestamp="1581581366602" />
-    <state width="1600" height="370" key="GridCell.Tab.0.bottom" timestamp="1584789331353">
+    <state width="1600" height="370" key="GridCell.Tab.0.bottom" timestamp="1584806763981">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1600" height="370" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1584789331353" />
-    <state width="1600" height="370" key="GridCell.Tab.0.center" timestamp="1584789331351">
+    <state width="1600" height="370" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1584806763981" />
+    <state width="1600" height="370" key="GridCell.Tab.0.center" timestamp="1584806763981">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1600" height="370" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1584789331351" />
-    <state width="1600" height="370" key="GridCell.Tab.0.left" timestamp="1584789331350">
+    <state width="1600" height="370" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1584806763981" />
+    <state width="1600" height="370" key="GridCell.Tab.0.left" timestamp="1584806763980">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1600" height="370" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1584789331350" />
-    <state width="1600" height="370" key="GridCell.Tab.0.right" timestamp="1584789331352">
+    <state width="1600" height="370" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1584806763980" />
+    <state width="1600" height="370" key="GridCell.Tab.0.right" timestamp="1584806763981">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1600" height="370" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1584789331352" />
+    <state width="1600" height="370" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1584806763981" />
     <state width="1796" height="336" key="GridCell.Tab.1.bottom" timestamp="1579005973346">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
@@ -394,6 +402,6 @@
     <SUITE FILE_PATH="coverage/docker_traffic$string.coverage" NAME="traffic_parse Coverage Results" MODIFIED="1579011817434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/util" />
     <SUITE FILE_PATH="coverage/docker_traffic$hello.coverage" NAME="main Coverage Results" MODIFIED="1579005950349" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/docker_traffic$docker.coverage" NAME="docker Coverage Results" MODIFIED="1584782451756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/shell" />
-    <SUITE FILE_PATH="coverage/docker_traffic$main.coverage" NAME="main Coverage Results" MODIFIED="1584789331337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/docker_traffic$main.coverage" NAME="main Coverage Results" MODIFIED="1584806763945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
