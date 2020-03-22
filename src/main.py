@@ -3,26 +3,44 @@ from flask import request
 
 from data.docker import dockerData
 from scheduler import prepare
-from shell.docker import get_container_interface, get_container_ip2, get_container_name
-from shell.tc import get_current_rule, reset, limit, limit_by_src_and_dst
+from shell.docker import get_container_interface, get_container_ip2, get_container_name, get_container_id_by_ip
+from shell.tc import get_qdisc_rule, reset, limit, limit_by_src_and_dst, get_class, get_filter, get_class_limit, \
+    get_filter_src
 from util.decorator import api_response
 
 app = Flask(__name__)
 
 
-@api_response
 @app.route('/api/container_info', methods=['GET'])
+@api_response
 def api_get_container_info():
-    container_info = {}
+    container_info = []
     for container_id in dockerData.container_ids:
         interface = get_container_interface(container_id)
         ip = get_container_ip2(container_id)
         name = get_container_name(container_id)
-        container_info[container_id] = {
-            "interface": interface,
-            "ip": ip,
-            "name": name,
-        }
+        container_info.append({
+            "data": {
+                "interface": interface,
+                "ip": ip,
+                "name": name,
+                "id": container_id,
+                "class": get_class(container_id),
+                "filter": get_filter(container_id),
+            }
+        })
+        container_class_limit = get_class_limit(interface)
+        if len(container_class_limit):
+            container_filter_src = get_filter_src(interface)
+            container_info.append({
+                "data": {
+                    "id": container_id + "/" + container_filter_src,
+                    "source": get_container_id_by_ip(container_filter_src),
+                    "target": container_id,
+                    "limit": container_class_limit,
+                }
+            })
+
     return container_info
 
 
@@ -36,7 +54,7 @@ def get_container_info():
         name = get_container_name(container_id)
         container_info[container_id] = {
             "interface": interface,
-            "rule": get_current_rule(interface),
+            "rule": get_qdisc_rule(interface),
             "ip": ip,
             "name": name,
         }

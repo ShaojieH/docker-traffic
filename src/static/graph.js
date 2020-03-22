@@ -1,12 +1,7 @@
 fetch('/api/container_info')
     .then(response => response.json())
-    .then(data => Object.keys(data))
-    .then(container_ids => container_ids.map(
-        container_id => {
-            return {data: {id: container_id}};
-        }
-    ))
     .then(data => {
+        console.log(data);
         var cy = window.cy = cytoscape({
 
             container: document.getElementById('cy'), // container to render in
@@ -16,16 +11,18 @@ fetch('/api/container_info')
                     selector: 'node',
                     style: {
                         'background-color': '#1b87cf',
-                        'label': 'data(id)'
+                        'label': 'data(name)'
                     }
                 },
                 {
                     selector: 'edge',
                     style: {
-                        'width': 3,
+                        'width': 10,
                         'line-color': '#ccc',
                         'target-arrow-color': '#ccc',
-                        'target-arrow-shape': 'triangle'
+                        'target-arrow-shape': 'triangle',
+                        'curve-style': 'bezier',
+                        'content': 'data(limit)'
                     }
                 }
             ],

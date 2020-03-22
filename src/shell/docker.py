@@ -13,7 +13,6 @@ def docker_ps():
 def docker_inspect(container_id):
     command = "docker inspect {0}".format(container_id)
     result = sudo_run_and_get_result_or_error(command)
-    # print(result)
     return json.loads(result)[0]
 
 
@@ -37,6 +36,13 @@ def get_container_ip(container_id):
     return result
 
 
+def get_container_id_by_ip(container_ip):
+    for container_id in dockerData.container_ids:
+        if get_container_ip2(container_id) == container_ip:
+            return container_id
+    return ""
+
+
 def get_container_ip2(container_id):
     return [elem['IPAddress'] for elem in docker_inspect(container_id)['NetworkSettings']['Networks'].values()][0]
 
@@ -46,4 +52,4 @@ def get_container_name(container_id):
 
 
 if __name__ == '__main__':
-    print(get_container_ip2("fe04af677676"))
+    print(get_container_id_by_ip("172.18.0.4"))
