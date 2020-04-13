@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e959c6d-aedc-4775-868d-850cc8878552" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/misc/image/ezgif.com-gif-maker (1).gif.crdownload" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -223,7 +223,8 @@
       <workItem from="1584845747571" duration="9767000" />
       <workItem from="1585620915111" duration="5047000" />
       <workItem from="1585626480087" duration="78000" />
-      <workItem from="1586244859211" duration="659000" />
+      <workItem from="1586244859211" duration="1024000" />
+      <workItem from="1586793189355" duration="107000" />
     </task>
     <task id="LOCAL-00001" summary="add bandwhich">
       <created>1579012426597</created>
@@ -323,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585626533112</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add gif">
+      <created>1586248766190</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1586248766190</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +350,8 @@
     <MESSAGE value="add tc for controlling traffic between containers" />
     <MESSAGE value="add edge to graph" />
     <MESSAGE value="add prompt in graph" />
-    <option name="LAST_COMMIT_MESSAGE" value="add prompt in graph" />
+    <MESSAGE value="add gif" />
+    <option name="LAST_COMMIT_MESSAGE" value="add gif" />
   </component>
   <component name="WindowStateProjectService">
     <state x="590" y="215" width="800" height="684" key="#Plugins" timestamp="1579013761959">
@@ -361,10 +370,10 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="696" y="350" width="588" height="413" key="#com.intellij.fileTypes.FileTypeChooser/70.27.1850.1053@70.27.1850.1053" timestamp="1579013173873" />
-    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2" timestamp="1585626532380">
+    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2" timestamp="1586248764368">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1585626532380" />
+    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1586248764368" />
     <state x="763" y="294" width="453" height="525" key="FileChooserDialogImpl" timestamp="1581581366602">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
@@ -401,18 +410,18 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state width="898" height="336" key="GridCell.Tab.1.right/70.27.1850.1053@70.27.1850.1053" timestamp="1584865186299" />
-    <state x="415" y="209" width="1037" height="737" key="SettingsEditor" timestamp="1585626310517">
+    <state x="540" y="136" width="1037" height="737" key="SettingsEditor" timestamp="1586249011774">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="415" y="209" width="1037" height="737" key="SettingsEditor/70.27.1850.1053@70.27.1850.1053" timestamp="1585626310517" />
-    <state x="590" y="288" width="800" height="538" key="Vcs.Push.Dialog.v2" timestamp="1585626534802">
+    <state x="540" y="136" width="1037" height="737" key="SettingsEditor/70.27.1850.1053@70.27.1850.1053" timestamp="1586249011774" />
+    <state x="590" y="288" width="800" height="538" key="Vcs.Push.Dialog.v2" timestamp="1586248798707">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="590" y="288" width="800" height="538" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1585626534802" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1586244899230">
+    <state x="590" y="288" width="800" height="538" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1586248798707" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1586793189362">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1586244899230" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1586793189362" />
     <state x="645" y="81" width="700" height="945" key="find.popup" timestamp="1581581664670">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
