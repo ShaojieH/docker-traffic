@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YAML parser for JavaScript - JS-YAML</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Live example of YAML JavaScript parser right in your browser. Type your YAML code and see result.">
+    <meta name="keywords" content="yaml,parser,javascript">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/codemirror.css">
+    <link rel="stylesheet" href="/static/demo.css">
+
+    <script src="https://cdn.jsdelivr.net/es5.shim/4.4.1/es5-shim.min.js"></script>
+    <script src="/static/demo.js"></script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-26895916-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+  </head>
+  <body>
+
+    <div class="header">
+      <h1>编辑配置文件</h1>
+    </div>
+    <div class="content">
+      <div class="src">
+        <h4 class="subheader" ><a href="#" id="permalink"></a> Edit source here:</h4>
+        <textarea id="source">{{docker_config}}
+        </textarea>
+      </div>
+      <div class="dst">
+        <h4 class="subheader">配置文件对象</h4>
+        <textarea id="result"></textarea>
+      </div>
+    </div>
+
+  </body>
+</html>

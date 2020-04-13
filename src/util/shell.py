@@ -10,7 +10,6 @@ def get_sudo_command(command):
 
 def run_and_get_result(command):
     command_arr = command.split()
-    print(command_arr)
     return subprocess.run([command_arr], capture_output=True)
     # return os.popen(command).read()
 

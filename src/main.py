@@ -3,10 +3,12 @@ from flask import request
 
 from data.docker import dockerData
 from scheduler import prepare
+from shell.config import get_docker_config_list, get_docker_config
 from shell.docker import get_container_interface, get_container_ip2, get_container_name, get_container_id_by_ip
 from shell.tc import get_qdisc_rule, reset, limit, limit_by_src_and_dst, get_class, get_filter, get_class_limit, \
     get_filter_src
 from util.decorator import api_response
+from util.web import wrap_response
 
 app = Flask(__name__)
 
@@ -91,6 +93,16 @@ def add_container_rule():
 @app.route('/graph', methods=['GET'])
 def graph():
     return render_template('graph.html')
+
+
+@app.route('/configs', methods=['GET'])
+def docker_configs():
+    return render_template('config_list.html', list_of_file=get_docker_config_list())
+
+
+@app.route('/config/<filename>', methods=['GET'])
+def docker_config(filename):
+    return render_template('docker_config2.html', docker_config=get_docker_config(filename))
 
 
 if __name__ == '__main__':

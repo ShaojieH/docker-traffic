@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://cdn.bootcss.com/js-yaml/3.13.1/js-yaml.js"></script>
+
+        <script type="text/javascript">
+            const content = {{docker_config|tojson}};
+            var doc = jsyaml.load(content);
+            console.log(doc);
+        </script>
+        <title>List of Config</title>
+    </head>
+    <body>
+        <label>
+            <textarea id="config_content">
+                {{docker_config}}
+            </textarea>
+        </label>
+    </body>
+</html>
+
+
+
