@@ -3,12 +3,11 @@ from flask import request
 
 from data.docker import dockerData
 from scheduler import prepare
-from shell.config import get_docker_config_list, get_docker_config
 from shell.docker import get_container_interface, get_container_ip2, get_container_name, get_container_id_by_ip
+from shell.docker_config import get_config_list, get_config, set_config, apply_config
 from shell.tc import get_qdisc_rule, reset, limit, limit_by_src_and_dst, get_class, get_filter, get_class_limit, \
     get_filter_src
 from util.decorator import api_response
-from util.web import wrap_response
 
 app = Flask(__name__)
 
@@ -95,14 +94,26 @@ def graph():
     return render_template('graph.html')
 
 
-@app.route('/configs', methods=['GET'])
-def docker_configs():
-    return render_template('config_list.html', list_of_file=get_docker_config_list())
+@app.route('/config', methods=['GET'])
+def get_docker_config_list():
+    return render_template('docker_config_list.html', list_of_file=get_config_list())
 
 
 @app.route('/config/<filename>', methods=['GET'])
-def docker_config(filename):
-    return render_template('docker_config2.html', docker_config=get_docker_config(filename))
+def get_docker_config(filename):
+    return render_template('docker_config.html', docker_config=get_config(filename), filename=filename)
+
+
+@app.route('/config/<filename>', methods=['POST'])
+def save_docker_config(filename):
+    set_config(filename, request.form['content'])
+    return redirect('/config/{0}'.format(filename))
+
+
+@app.route('/config/apply/<filename>', methods=['POST'])
+def apply_docker_config(filename):
+    apply_config(filename)
+    return redirect('/graph')
 
 
 if __name__ == '__main__':

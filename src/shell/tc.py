@@ -52,9 +52,9 @@ def limit_by_src_and_dst(src_container_id, dst_container_id, limit=5000):
     dst_container_interface = get_container_interface(dst_container_id)
     src_container_ip = get_container_ip(src_container_id)
     command = "./shell/tc_by_ip_2.sh {0} {1} {2}".format(dst_container_interface, src_container_ip, limit)
-    print(command)
+    # print(command)
     result = sudo_run_and_get_result_or_error(command)
-    print(result)
+    # print(result)
 
 
 if __name__ == '__main__':

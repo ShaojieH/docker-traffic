@@ -1,23 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://cdn.bootcss.com/js-yaml/3.13.1/js-yaml.js"></script>
+  <head>
+    <title>编辑配置文件</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Live example of YAML JavaScript parser right in your browser. Type your YAML code and see result.">
+    <meta name="keywords" content="yaml,parser,javascript">
 
-        <script type="text/javascript">
-            const content = {{docker_config|tojson}};
-            var doc = jsyaml.load(content);
-            console.log(doc);
-        </script>
-        <title>List of Config</title>
-    </head>
-    <body>
-        <label>
-            <textarea id="config_content">
-                {{docker_config}}
-            </textarea>
-        </label>
-    </body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/codemirror.css">
+    <link rel="stylesheet" href="/static/demo.css">
+
+    <script src="https://cdn.jsdelivr.net/es5.shim/4.4.1/es5-shim.min.js"></script>
+    <script src="/static/demo.js"></script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-26895916-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+  </head>
+  <body>
+
+    <div class="header">
+      <h1>编辑配置文件 {{filename}}</h1>
+    </div>
+    <div class="content">
+      <div class="src">
+        <h4 class="subheader" ><a href="#" id="permalink"></a> </h4>
+        <form action="/config/{{filename}}" method="post" id="content_form">
+          <button type="submit" ">保存</button>
+        </form>
+        <form action="/config/apply/{{filename}}" method="post">
+          <button type="submit">应用</button>
+        </form>
+
+
+        <textarea id="source" form="content_form" name="content">{{docker_config}}</textarea>
+      </div>
+      <div class="dst">
+        <h4 class="subheader">配置文件对象</h4>
+        <textarea id="result"></textarea>
+      </div>
+    </div>
+
+  </body>
 </html>
-
-
-

@@ -1,0 +1,10 @@
+<!doctype html>
+<title>配置列表</title>
+
+{% for filename in list_of_file %}
+
+    <form action="/config/apply/{{filename}}" method="post">
+        <a href="/config/{{filename}}"> {{filename}}</a>
+        <button type="submit">应用</button>
+    </form>
+{% endfor %}

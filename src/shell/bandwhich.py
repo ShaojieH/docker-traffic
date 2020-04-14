@@ -10,6 +10,7 @@ from util.traffic_parse import match_bandwhich_output, Traffic_log_type
 def start_bandwhich_monitor():
     download_thread = threading.Thread(target=do_start_bandwhich_monitor)
     download_thread.start()
+    print("bandwhich monitor stopped")
 
 
 def do_start_bandwhich_monitor():

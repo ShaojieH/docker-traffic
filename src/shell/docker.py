@@ -51,5 +51,11 @@ def get_container_name(container_id):
     return docker_inspect(container_id)['Name']
 
 
+def get_container_id_by_name(container_name):
+    for container_id in dockerData.container_ids:
+        if get_container_name(container_id) == container_name:
+            return container_id
+
+
 if __name__ == '__main__':
     print(get_container_id_by_ip("172.18.0.4"))
