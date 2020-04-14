@@ -9,10 +9,6 @@ background_scheduler = BackgroundScheduler()
 
 def prepare():
     start_scheduler()
-    # start_monitor()
-
-
-def start_monitor():
     start_bandwhich_monitor()
 
 
