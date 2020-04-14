@@ -2,43 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e959c6d-aedc-4775-868d-850cc8878552" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/PyYAML-5.3.1-py3.7.egg-info/PKG-INFO" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/PyYAML-5.3.1-py3.7.egg-info/SOURCES.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/PyYAML-5.3.1-py3.7.egg-info/dependency_links.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/PyYAML-5.3.1-py3.7.egg-info/installed-files.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/PyYAML-5.3.1-py3.7.egg-info/top_level.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/composer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/constructor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/cyaml.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/dumper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/emitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/error.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/events.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/nodes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/parser.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/reader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/representer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/resolver.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/scanner.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/serializer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/tokens.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-spark" beforeDir="false" afterPath="$PROJECT_DIR$/docker-spark" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-spark/config/test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-spark/config/test.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-spark/config/test2.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-spark/config/test2.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-spark/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-spark/deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shell/bandwhich.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell/bandwhich.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shell/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell/docker_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shell/docker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell/docker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shell/tc.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell/tc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/config_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/docker_config_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/docker_config.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/docker_config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/docker_config2.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +225,7 @@
       <workItem from="1585620915111" duration="5047000" />
       <workItem from="1585626480087" duration="78000" />
       <workItem from="1586244859211" duration="1024000" />
-      <workItem from="1586793189355" duration="12688000" />
+      <workItem from="1586793189355" duration="13018000" />
     </task>
     <task id="LOCAL-00001" summary="add bandwhich">
       <created>1579012426597</created>
@@ -382,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586797941915</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="add yaml apply">
+      <created>1586838113546</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1586838113546</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -403,7 +374,8 @@
     <MESSAGE value="add prompt in graph" />
     <MESSAGE value="add gif" />
     <MESSAGE value="add yaml" />
-    <option name="LAST_COMMIT_MESSAGE" value="add yaml" />
+    <MESSAGE value="add yaml apply" />
+    <option name="LAST_COMMIT_MESSAGE" value="add yaml apply" />
   </component>
   <component name="WindowStateProjectService">
     <state x="590" y="215" width="800" height="684" key="#Plugins" timestamp="1579013761959">
@@ -422,10 +394,14 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="696" y="350" width="628" height="413" key="#com.intellij.fileTypes.FileTypeChooser/70.27.1850.1053@70.27.1850.1053" timestamp="1586793459755" />
-    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2" timestamp="1586797941862">
+    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2" timestamp="1586838113365">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1586797941862" />
+    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1586838113365" />
+    <state x="363" y="121" width="1480" height="879" key="DiffContextDialog" timestamp="1586838127760">
+      <screen x="70" y="27" width="1850" height="1053" />
+    </state>
+    <state x="363" y="121" width="1480" height="879" key="DiffContextDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1586838127760" />
     <state x="763" y="294" width="453" height="525" key="FileChooserDialogImpl" timestamp="1581581366602">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
@@ -470,10 +446,10 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="540" y="136" width="1037" height="737" key="SettingsEditor/70.27.1850.1053@70.27.1850.1053" timestamp="1586797976470" />
-    <state x="590" y="288" width="1035" height="538" key="Vcs.Push.Dialog.v2" timestamp="1586797957811">
+    <state x="590" y="288" width="1035" height="538" key="Vcs.Push.Dialog.v2" timestamp="1586838129506">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="590" y="288" width="1035" height="538" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1586797957811" />
+    <state x="590" y="288" width="1035" height="538" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1586838129506" />
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1586793189362">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
