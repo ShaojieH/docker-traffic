@@ -33,6 +33,7 @@ def reset(interface):
     command = "tc qdisc del dev {0} root".format(interface)
     result = sudo_run_and_get_result_or_error(command)
     print(result)
+    return {"result": result}
 
 
 def limit(interface, rate="4Mbit", burst="10kB", latency="1000ms"):
@@ -40,6 +41,7 @@ def limit(interface, rate="4Mbit", burst="10kB", latency="1000ms"):
                                                                                          latency)
     result = sudo_run_and_get_result_or_error(command)
     print(result)
+    return {"result": result}
 
 
 def limit_by_src_and_dst(src_container_id, dst_container_id, limit=5000):
@@ -55,6 +57,7 @@ def limit_by_src_and_dst(src_container_id, dst_container_id, limit=5000):
     # print(command)
     result = sudo_run_and_get_result_or_error(command)
     # print(result)
+    return {"result": result}
 
 
 if __name__ == '__main__':

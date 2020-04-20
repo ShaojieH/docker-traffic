@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect
 from flask import request
+from flask_cors import CORS
 
 from data.docker import dockerData
 from scheduler import prepare
@@ -10,9 +11,10 @@ from shell.tc import get_qdisc_rule, reset, limit, limit_by_src_and_dst, get_cla
 from util.decorator import api_response
 
 app = Flask(__name__)
+CORS(app)
 
 
-@app.route('/api/container_info', methods=['GET'])
+@app.route('/api/container/graph', methods=['GET'])
 @api_response
 def api_get_container_info():
     container_info = []
@@ -45,21 +47,35 @@ def api_get_container_info():
     return container_info
 
 
-@app.route('/container_info', methods=['GET'])
-@app.route('/', methods=['GET'])
-def get_container_info():
-    container_info = {}
+@app.route('/api/container', methods=['GET'])
+@api_response
+def api_get_container_list():
+    container_info = []
     for container_id in dockerData.container_ids:
         interface = get_container_interface(container_id)
         ip = get_container_ip2(container_id)
         name = get_container_name(container_id)
-        container_info[container_id] = {
+        container_info.append({
+            "container_id": container_id,
             "interface": interface,
             "rule": get_qdisc_rule(interface),
             "ip": ip,
             "name": name,
-        }
-    return render_template('container_info.html', container_info=container_info)
+        })
+    return container_info
+
+
+@app.route('/container_info', methods=['GET'])
+@app.route('/', methods=['GET'])
+def get_container_info():
+    return render_template('container_info.html', container_info=api_get_container_list())
+
+
+@app.route('/api/container/reset', methods=['POST'])
+@api_response
+def api_reset_container_rule():
+    interface = request.form['interface']
+    return reset(interface)
 
 
 @app.route('/reset_container_rule', methods=['POST'])
@@ -94,9 +110,19 @@ def graph():
     return render_template('graph.html')
 
 
+@app.route('/api/config', methods=['GET'])
+def api_get_docker_config_list():
+    return {'configs': get_config_list()}
+
+
 @app.route('/config', methods=['GET'])
 def get_docker_config_list():
     return render_template('docker_config_list.html', list_of_file=get_config_list())
+
+
+@app.route('/api/config/<filename>', methods=['GET'])
+def api_get_docker_config(filename):
+    return get_config(filename)
 
 
 @app.route('/config/<filename>', methods=['GET'])
