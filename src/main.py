@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import Flask, render_template, redirect
 from flask import request
 from flask_cors import CORS
@@ -141,6 +143,13 @@ def apply_docker_config(filename):
     apply_config(filename)
     return redirect('/graph')
 
+@app.route('/api/config/apply/<filename>', methods=['POST'])
+def api_docker_config(filename):
+    start = datetime.now()
+    apply_config(filename)
+    end = datetime.now()
+    print("time", end-start)
+    return "success"
 
 if __name__ == '__main__':
     prepare()

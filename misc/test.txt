@@ -1,0 +1,6 @@
+deploy time test
+
+3 workers, 3 rule,53s
+4 workers, 3 rule,54s
+5 workers, 3 rule,59s
+
