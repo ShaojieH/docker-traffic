@@ -11,6 +11,7 @@ from shell.docker_config import get_config_list, get_config, set_config, apply_c
 from shell.tc import get_qdisc_rule, reset, limit, limit_by_src_and_dst, get_class, get_filter, get_class_limit, \
     get_filter_src
 from util.decorator import api_response
+from util.test import do_apply_simple_test, do_reset_simple_test, do_apply_complex_test
 
 app = Flask(__name__)
 CORS(app)
@@ -143,13 +144,33 @@ def apply_docker_config(filename):
     apply_config(filename)
     return redirect('/graph')
 
+
 @app.route('/api/config/apply/<filename>', methods=['POST'])
 def api_docker_config(filename):
     start = datetime.now()
     apply_config(filename)
     end = datetime.now()
-    print("time", end-start)
+    print("time", end - start)
     return "success"
+
+
+@app.route('/api/test/simple/apply', methods=['POST'])
+def api_apply_simple_test():
+    do_apply_simple_test()
+    return "success"
+
+
+@app.route('/api/test/complex/apply', methods=['POST'])
+def api_apply_complex_test():
+    do_apply_complex_test()
+    return "success"
+
+
+@app.route('/api/test/simple/reset', methods=['POST'])
+def api_reset_simple_test():
+    do_reset_simple_test()
+    return "success"
+
 
 if __name__ == '__main__':
     prepare()
