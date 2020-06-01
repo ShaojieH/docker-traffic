@@ -11,7 +11,8 @@ from shell.docker_config import get_config_list, get_config, set_config, apply_c
 from shell.tc import get_qdisc_rule, reset, limit, limit_by_src_and_dst, get_class, get_filter, get_class_limit, \
     get_filter_src
 from util.decorator import api_response
-from util.test import do_apply_simple_test, do_reset_simple_test, do_apply_complex_test
+from util.rule_apply import do_apply_simple_test, do_reset_simple_test, do_apply_complex_test, do_apply_simple, \
+    do_reset_simple
 
 app = Flask(__name__)
 CORS(app)
@@ -162,14 +163,29 @@ def api_apply_simple_test():
 
 @app.route('/api/test/complex/apply', methods=['POST'])
 def api_apply_complex_test():
-    do_apply_complex_test()
-    return "success"
+    return do_apply_complex_test()
+    # return "success"
 
 
 @app.route('/api/test/simple/reset', methods=['POST'])
 def api_reset_simple_test():
-    do_reset_simple_test()
-    return "success"
+    return do_reset_simple_test()
+    # return "success"
+
+
+@app.route('/api/simple/apply', methods=['POST'])
+def api_apply_simple():
+    container = request.args.get('container')
+    dst_ip = request.args.get('dst_ip')
+    limit = request.args.get('limit')
+    prio = request.args.get('prio')
+    return do_apply_simple(container, dst_ip, limit, prio)
+
+
+@app.route('/api/simple/reset', methods=['POST'])
+def api_reset_simple():
+    container = request.args.get('container')
+    return do_reset_simple(container)
 
 
 if __name__ == '__main__':

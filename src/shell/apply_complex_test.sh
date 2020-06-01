@@ -9,6 +9,7 @@ WORKER3="172.18.0.4"
 
 docker exec $CONTAINER tc qdisc del dev $DEV root
 
+# first group
 docker exec $CONTAINER tc qdisc add dev $DEV root handle 1: htb default 12
 docker exec $CONTAINER tc class add dev $DEV parent 1: classid 1:1 htb rate 8000kbps ceil 8000kbps
 
@@ -22,6 +23,8 @@ docker exec $CONTAINER tc filter add dev $DEV protocol ip parent 1:0 prio 1 u32 
    match ip dst $WORKER2 flowid 1:10
 docker exec $CONTAINER tc filter add dev $DEV protocol ip parent 1:0 prio 1 u32 \
    match ip dst $WORKER3 flowid 1:11
+
+# second group
 
 docker exec $CONTAINER tc qdisc add dev $DEV parent 1:10 handle 10: htb default 12
 docker exec $CONTAINER tc class add dev $DEV parent 10: classid 10:1 htb rate 9999kbps ceil 9999kbps
