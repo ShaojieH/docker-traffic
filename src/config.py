@@ -6,6 +6,6 @@ influxdb_address = "localhost"
 influxdb_database_name = "bandwhich"
 influxdb_connection = "influxdb_connection"
 
-DOCKER_DIR = "../../docker-spark"
+DOCKER_DIR = "../docker-spark"
 DOCKER_COMPOSE = DOCKER_DIR + "/docker-compose.yml"
 DOCKER_CONFIG_DIR = DOCKER_DIR + "/config"

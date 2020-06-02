@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e959c6d-aedc-4775-868d-850cc8878552" name="Default Changelist" comment="add tc by src">
-      <change afterPath="$PROJECT_DIR$/misc/image/Peek 2020-05-31 00-21.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shell/apply_simple.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shell/reset_simple.sh" afterDir="false" />
+    <list default="true" id="5e959c6d-aedc-4775-868d-850cc8878552" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/shell/real_complex_test.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-spark" beforeDir="false" afterPath="$PROJECT_DIR$/docker-spark" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-spark/config/test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-spark/config/test.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-spark/config/test2.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-spark/config/test2.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shell/apply_complex_test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell/apply_complex_test.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shell/docker_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell/docker_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/rule_apply.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/shell.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/shell.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,8 +189,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.docker_config" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.docker_config" />
         <item itemvalue="Python.docker" />
         <item itemvalue="Python.tc (1)" />
         <item itemvalue="Python.tc" />
@@ -242,7 +236,8 @@
       <workItem from="1587352417065" duration="13552000" />
       <workItem from="1590415062841" duration="4247000" />
       <workItem from="1590851167242" duration="16460000" />
-      <workItem from="1591020656585" duration="6818000" />
+      <workItem from="1591020656585" duration="7172000" />
+      <workItem from="1591061244496" duration="8380000" />
     </task>
     <task id="LOCAL-00001" summary="add bandwhich">
       <created>1579012426597</created>
@@ -391,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590916921973</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="fix tc">
+      <created>1591028204733</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1591028204733</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,77 +418,78 @@
     <MESSAGE value="add yaml screenshot" />
     <MESSAGE value="add tc by src" />
     <MESSAGE value="add test complex" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test complex" />
+    <MESSAGE value="fix tc" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix tc" />
   </component>
   <component name="WindowStateProjectService">
     <state x="696" y="350" width="628" height="413" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586793459755">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="696" y="350" width="628" height="413" key="#com.intellij.fileTypes.FileTypeChooser/70.27.1850.1053@70.27.1850.1053" timestamp="1586793459755" />
-    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2" timestamp="1590916921070">
+    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2" timestamp="1591028204415">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1590916921070" />
+    <state x="549" y="136" width="1227" height="842" key="CommitChangelistDialog2/70.27.1850.1053@70.27.1850.1053" timestamp="1591028204415" />
     <state x="363" y="121" width="1480" height="879" key="DiffContextDialog" timestamp="1586838127760">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="363" y="121" width="1480" height="879" key="DiffContextDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1586838127760" />
-    <state width="1796" height="262" key="GridCell.Tab.0.bottom" timestamp="1591027792025">
+    <state width="1796" height="262" key="GridCell.Tab.0.bottom" timestamp="1591069731687">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1796" height="262" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1591027792025" />
-    <state width="1796" height="262" key="GridCell.Tab.0.center" timestamp="1591027792025">
+    <state width="1796" height="262" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1591069731687" />
+    <state width="1796" height="262" key="GridCell.Tab.0.center" timestamp="1591069731685">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1796" height="262" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1591027792025" />
-    <state width="1796" height="262" key="GridCell.Tab.0.left" timestamp="1591027792025">
+    <state width="1796" height="262" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1591069731685" />
+    <state width="1796" height="262" key="GridCell.Tab.0.left" timestamp="1591069731684">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1796" height="262" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1591027792025" />
-    <state width="1796" height="262" key="GridCell.Tab.0.right" timestamp="1591027792025">
+    <state width="1796" height="262" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1591069731684" />
+    <state width="1796" height="262" key="GridCell.Tab.0.right" timestamp="1591069731687">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1796" height="262" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1591027792025" />
-    <state width="898" height="336" key="GridCell.Tab.1.bottom" timestamp="1584865186300">
+    <state width="1796" height="262" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1591069731687" />
+    <state width="1796" height="336" key="GridCell.Tab.1.bottom" timestamp="1591064006063">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="898" height="336" key="GridCell.Tab.1.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1584865186300" />
-    <state width="898" height="336" key="GridCell.Tab.1.center" timestamp="1584865186299">
+    <state width="1796" height="336" key="GridCell.Tab.1.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1591064006063" />
+    <state width="1796" height="336" key="GridCell.Tab.1.center" timestamp="1591064006062">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="898" height="336" key="GridCell.Tab.1.center/70.27.1850.1053@70.27.1850.1053" timestamp="1584865186299" />
-    <state width="898" height="336" key="GridCell.Tab.1.left" timestamp="1584865186298">
+    <state width="1796" height="336" key="GridCell.Tab.1.center/70.27.1850.1053@70.27.1850.1053" timestamp="1591064006062" />
+    <state width="1796" height="336" key="GridCell.Tab.1.left" timestamp="1591064006062">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="898" height="336" key="GridCell.Tab.1.left/70.27.1850.1053@70.27.1850.1053" timestamp="1584865186298" />
-    <state width="898" height="336" key="GridCell.Tab.1.right" timestamp="1584865186299">
+    <state width="1796" height="336" key="GridCell.Tab.1.left/70.27.1850.1053@70.27.1850.1053" timestamp="1591064006062" />
+    <state width="1796" height="336" key="GridCell.Tab.1.right" timestamp="1591064006063">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="898" height="336" key="GridCell.Tab.1.right/70.27.1850.1053@70.27.1850.1053" timestamp="1584865186299" />
+    <state width="1796" height="336" key="GridCell.Tab.1.right/70.27.1850.1053@70.27.1850.1053" timestamp="1591064006063" />
     <state x="733" y="190" width="513" height="733" key="RollbackChangesDialog" timestamp="1586797389087">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="733" y="190" width="513" height="733" key="RollbackChangesDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1586797389087" />
-    <state x="540" y="136" width="1037" height="737" key="SettingsEditor" timestamp="1586797976470">
+    <state x="540" y="136" width="1037" height="737" key="SettingsEditor" timestamp="1591028250369">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="540" y="136" width="1037" height="737" key="SettingsEditor/70.27.1850.1053@70.27.1850.1053" timestamp="1586797976470" />
-    <state x="590" y="288" width="1035" height="538" key="Vcs.Push.Dialog.v2" timestamp="1590916926241">
+    <state x="540" y="136" width="1037" height="737" key="SettingsEditor/70.27.1850.1053@70.27.1850.1053" timestamp="1591028250368" />
+    <state x="590" y="288" width="1035" height="538" key="Vcs.Push.Dialog.v2" timestamp="1591028318061">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="590" y="288" width="1035" height="538" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1590916926241" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1591020697112">
+    <state x="590" y="288" width="1035" height="538" key="Vcs.Push.Dialog.v2/70.27.1850.1053@70.27.1850.1053" timestamp="1591028318061" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1591061252056">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1591020697112" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1591061252056" />
     <state x="645" y="81" width="700" height="945" key="find.popup" timestamp="1590911708976">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="645" y="81" width="700" height="945" key="find.popup/70.27.1850.1053@70.27.1850.1053" timestamp="1590911708976" />
-    <state x="654" y="334" width="672" height="446" key="git4idea.merge.GitPullDialog" timestamp="1587286091949">
+    <state x="654" y="334" width="672" height="446" key="git4idea.merge.GitPullDialog" timestamp="1591061261289">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="654" y="334" width="672" height="446" key="git4idea.merge.GitPullDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1587286091949" />
+    <state x="654" y="334" width="672" height="446" key="git4idea.merge.GitPullDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1591061261289" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/docker_traffic$traffic.coverage" NAME="traffic Coverage Results" MODIFIED="1581483833517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/cron" />
@@ -495,10 +498,10 @@
     <SUITE FILE_PATH="coverage/docker_traffic$tc__1_.coverage" NAME="tc (1) Coverage Results" MODIFIED="1584849964360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/util" />
     <SUITE FILE_PATH="coverage/docker_traffic$shell.coverage" NAME="shell Coverage Results" MODIFIED="1579002150370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/util" />
     <SUITE FILE_PATH="coverage/docker_traffic$influxdb.coverage" NAME="influx Coverage Results" MODIFIED="1579165184457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/db" />
-    <SUITE FILE_PATH="coverage/docker_traffic$docker_config.coverage" NAME="docker_config Coverage Results" MODIFIED="1591027792020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/shell" />
+    <SUITE FILE_PATH="coverage/docker_traffic$docker_config.coverage" NAME="docker_config Coverage Results" MODIFIED="1591065682365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/shell" />
     <SUITE FILE_PATH="coverage/docker_traffic$string.coverage" NAME="traffic_parse Coverage Results" MODIFIED="1579011817434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/util" />
     <SUITE FILE_PATH="coverage/docker_traffic$hello.coverage" NAME="main Coverage Results" MODIFIED="1579005950349" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/docker_traffic$docker.coverage" NAME="docker Coverage Results" MODIFIED="1584852910750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/shell" />
-    <SUITE FILE_PATH="coverage/docker_traffic$main.coverage" NAME="main Coverage Results" MODIFIED="1591024115055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/docker_traffic$main.coverage" NAME="main Coverage Results" MODIFIED="1591069731670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

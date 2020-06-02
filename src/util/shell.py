@@ -4,6 +4,13 @@ import subprocess
 from config import sudoPassword
 
 
+def apply_commands(commands: list):
+    for command in commands:
+        print(commands)
+        result = sudo_run_and_get_result_or_error(command)
+        print(result)
+
+
 def get_sudo_command(command):
     return 'echo %s | sudo -S %s' % (sudoPassword, command)
 

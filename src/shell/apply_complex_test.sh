@@ -3,9 +3,9 @@ set -x
 
 CONTAINER="6d5fc7c4961a"
 DEV="eth0"
-WORKER1="172.18.0.5"
+WORKER1="172.18.0.4"
 WORKER2="172.18.0.3"
-WORKER3="172.18.0.4"
+WORKER3="172.18.0.2"
 
 docker exec $CONTAINER tc qdisc del dev $DEV root
 

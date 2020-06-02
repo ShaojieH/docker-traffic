@@ -1,8 +1,11 @@
+import time
+
 import yaml
 
 from config import DOCKER_CONFIG_DIR, DOCKER_DIR, DOCKER_COMPOSE
-from shell.docker import docker_ps, docker_network_ls, get_container_id_by_name
-from util.shell import sudo_run_and_get_result, sudo_run_and_get_realtime_result
+from data.docker import dockerData
+from shell.docker import get_container_id_by_name, get_container_ip
+from util.shell import sudo_run_and_get_result, sudo_run_and_get_realtime_result, sudo_run_and_get_result_or_error
 
 GROUP_TYPE = 1
 CONTAINER_TYPE = 2
@@ -14,12 +17,17 @@ class TreeNode:
     children: []
     limit: int
     node_type: int
+    x: int
+    parent: str
+    real_children: []
 
     def __init__(self, name: str, node_type: int):
         self.name = name
         self.node_type = node_type
         self.children = []
         self.limit = 0
+        self.parent = ""
+        self.real_children = []
 
     def __str__(self, level=0):
         ret = "\t" * level + repr(self.name) + "\n"
@@ -64,7 +72,20 @@ def get_node_type(name):
         return GROUP_TYPE
 
 
+def compute_real_children(group):
+    for child in group.children:
+        if get_node_type(child.name) == CONTAINER_TYPE:
+            group.real_children.append(child)
+        else:
+            compute_real_children(child)
+            group.real_children.extend(child.real_children)
+
+
 def apply_config(filename):
+    commands = []
+
+    commands.append(qdisc_del())
+
     with open(DOCKER_CONFIG_DIR + "/" + filename) as file:
         config = yaml.load(file, yaml.FullLoader)
         worker_count = config['worker']
@@ -75,6 +96,7 @@ def apply_config(filename):
         speed_limits = config['speed_limit']
         groups = config['groups']
         root = TreeNode("root", ROOT_TYPE)
+        root.parent = "root"
 
         added_groups = [root]
         added_containers = []
@@ -96,24 +118,81 @@ def apply_config(filename):
                 added_containers.append(container)
                 root.children.append(TreeNode(container, CONTAINER_TYPE))
 
-        print(root)
+        compute_real_children(root)
 
         for speed_limit in speed_limits:
             to_container = speed_limit['to_container']
             node = root.find_by_name(to_container)
             node.limit = speed_limit['limit']
-            # print(to_container)
-            # print(node.name)
-        # for speed_limit in speed_limits:
-        #     from_container = speed_limit['from_container']
-        #     from_container_id = get_container_name_mapping(from_container)
-        #     to_container = speed_limit['to_container']
-        #     to_container_id = get_container_name_mapping(to_container)
-        #     limit = speed_limit['limit']
-        #     limit_by_src_and_dst(from_container_id, to_container_id, limit)
+
+        x = 1
+        for group in added_groups:
+            group.x = x
+            x = x * 10
+            handle = f"{group.x}:0"
+            class_id = f"{group.x}:1"
+            commands.append(qdisc_add(group.parent, handle))
+            commands.append(default_add(class_id, group.x))
+            commands.append(class_add(handle, class_id, 9999))
+
+            y = 10
+
+            for child in group.children:
+                for speed_limit in speed_limits:
+                    to_container = speed_limit['to_container']
+                    if child.name == to_container:
+                        limit = speed_limit['limit']
+                        break
+
+                child_classid = f"{group.x}:{y}"
+                child.parent = child_classid
+                child.class_id = child_classid
+                y = y + 1
+
+                commands.append(class_add(class_id, child_classid, limit))
+
+                if get_node_type(child.name) == CONTAINER_TYPE:
+                    container_id = get_container_name_mapping(child.name)
+                    ip = get_container_ip(container_id)
+                    commands.append(filter_add(handle, ip, child.parent))
+
+                elif get_node_type(child.name) == GROUP_TYPE:
+                    for real_child in child.real_children:
+                        container_id = get_container_name_mapping(real_child.name)
+                        ip = get_container_ip(container_id)
+                        commands.append(filter_add(handle, ip, child_classid))
+
+        container_id = get_container_name_mapping("master")
+        init_container(worker_count)
+        for command in commands:
+            command = f"docker exec {container_id} " + command
+            print(command)
+            sudo_run_and_get_result_or_error(command)
+
+
+def qdisc_del():
+    return f"tc qdisc del dev eth0 root"
+
+
+def qdisc_add(parent: str, handle: str):
+    return f"tc qdisc add dev eth0 parent {parent} handle {handle} htb default 22"
+
+
+def default_add(parent: str, x):
+    return f"tc class add dev eth0 parent {parent} classid {x}:22 htb rate 8000kbps ceil 8000kbps"
+
+
+def class_add(parent: str, classid: str, limit: int):
+    return f"tc class add dev eth0 parent {parent} classid {classid} htb rate {limit}kbps ceil {limit}kbps"
+
+
+def filter_add(parent: str, ip: str, flowid: str):
+    return f"tc filter add dev eth0 protocol ip parent {parent} prio 1 u32 match ip dst {ip} flowid {flowid}"
 
 
 def init_container(worker_count):
+    if len(dockerData.container_ids) == worker_count + 1:
+        return
     command = DOCKER_DIR + "/deploy.sh {0} {1}".format(worker_count, DOCKER_COMPOSE)
     process = sudo_run_and_get_realtime_result(command)
     while True:
@@ -123,8 +202,8 @@ def init_container(worker_count):
         else:
             print(output)
 
-    docker_ps()
-    docker_network_ls()
+    while len(dockerData.container_ids) != worker_count + 1:
+        time.sleep(1)
 
 
 def get_container_name_mapping(config_name: str):  # "worker_{id}" or "master"
