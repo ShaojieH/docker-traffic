@@ -82,112 +82,112 @@ def compute_real_children(group):
 
 
 def apply_config(filename):
-    commands = []
-
-    commands.append(qdisc_del())
-
     with open(DOCKER_CONFIG_DIR + "/" + filename) as file:
         config = yaml.load(file, yaml.FullLoader)
         worker_count = config['worker']
         containers = []
         for count in range(1, worker_count + 1):
             containers.append(f"worker_{count}")
-        # init_container(worker_count)
-        speed_limits = config['speed_limit']
-        groups = config['groups']
-        root = TreeNode("root", ROOT_TYPE)
-        root.parent = "root"
+        commands = []
+        for rule in config['rules']:
+            root_container = rule['root']
+            speed_limits = rule['speed_limits']
+            root_container_id = get_container_name_mapping(root_container)
+            commands.append(qdisc_del(root_container_id))
 
-        added_groups = [root]
-        added_containers = []
-        for group in groups:
-            for added_group in added_groups:
-                if added_group.name == group['parent']:
-                    node = TreeNode(group['name'], GROUP_TYPE)
-                    for child in group['children']:
-                        node_type = get_node_type(child)
-                        if node_type is CONTAINER_TYPE:
-                            node.children.append(TreeNode(child, CONTAINER_TYPE))
-                            added_containers.append(child)
-                    added_groups.append(node)
-                    added_group.children.append(node)
-                    break
+            groups = rule['groups'] if 'groups' in rule else []
+            root = TreeNode("root", ROOT_TYPE)
+            root.parent = "root"
 
-        for container in containers:
-            if container not in added_containers:
-                added_containers.append(container)
-                root.children.append(TreeNode(container, CONTAINER_TYPE))
-
-        compute_real_children(root)
-
-        for speed_limit in speed_limits:
-            to_container = speed_limit['to_container']
-            node = root.find_by_name(to_container)
-            node.limit = speed_limit['limit']
-
-        x = 1
-        for group in added_groups:
-            group.x = x
-            x = x * 10
-            handle = f"{group.x}:0"
-            class_id = f"{group.x}:1"
-            commands.append(qdisc_add(group.parent, handle))
-            commands.append(default_add(class_id, group.x))
-            commands.append(class_add(handle, class_id, 9999))
-
-            y = 10
-
-            for child in group.children:
-                for speed_limit in speed_limits:
-                    to_container = speed_limit['to_container']
-                    if child.name == to_container:
-                        limit = speed_limit['limit']
+            added_groups = [root]
+            added_containers = []
+            for group in groups:
+                for added_group in added_groups:
+                    if added_group.name == group['parent']:
+                        node = TreeNode(group['name'], GROUP_TYPE)
+                        for child in group['children']:
+                            node_type = get_node_type(child)
+                            if node_type is CONTAINER_TYPE:
+                                node.children.append(TreeNode(child, CONTAINER_TYPE))
+                                added_containers.append(child)
+                        added_groups.append(node)
+                        added_group.children.append(node)
                         break
 
-                child_classid = f"{group.x}:{y}"
-                child.parent = child_classid
-                child.class_id = child_classid
-                y = y + 1
+            for container in containers:
+                if container not in added_containers:
+                    added_containers.append(container)
+                    root.children.append(TreeNode(container, CONTAINER_TYPE))
 
-                commands.append(class_add(class_id, child_classid, limit))
+            compute_real_children(root)
 
-                if get_node_type(child.name) == CONTAINER_TYPE:
-                    container_id = get_container_name_mapping(child.name)
-                    ip = get_container_ip(container_id)
-                    commands.append(filter_add(handle, ip, child.parent))
+            for speed_limit in speed_limits:
+                to_container = speed_limit['to_container']
+                node = root.find_by_name(to_container)
+                node.limit = speed_limit['limit']
 
-                elif get_node_type(child.name) == GROUP_TYPE:
-                    for real_child in child.real_children:
-                        container_id = get_container_name_mapping(real_child.name)
+            x = 1
+            for group in added_groups:
+                group.x = x
+                x = x * 10
+                handle = f"{group.x}:0"
+                class_id = f"{group.x}:1"
+                commands.append(qdisc_add(group.parent, handle, root_container_id))
+                commands.append(default_add(class_id, group.x, root_container_id))
+                commands.append(class_add(handle, class_id, 99999, root_container_id))
+
+                y = 10
+
+                for child in group.children:
+                    limit = None
+                    for speed_limit in speed_limits:
+                        to_container = speed_limit['to_container']
+                        if child.name == to_container:
+                            limit = speed_limit['limit']
+                            break
+                    if not limit:
+                        continue
+                    child_classid = f"{group.x}:{y}"
+                    child.parent = child_classid
+                    child.class_id = child_classid
+                    y = y + 1
+                    commands.append(class_add(class_id, child_classid, limit, root_container_id))
+
+                    if get_node_type(child.name) == CONTAINER_TYPE:
+                        container_id = get_container_name_mapping(child.name)
                         ip = get_container_ip(container_id)
-                        commands.append(filter_add(handle, ip, child_classid))
+                        commands.append(filter_add(handle, ip, child.parent, root_container_id))
 
-        container_id = get_container_name_mapping("master")
+                    elif get_node_type(child.name) == GROUP_TYPE:
+                        for real_child in child.real_children:
+                            container_id = get_container_name_mapping(real_child.name)
+                            ip = get_container_ip(container_id)
+                            commands.append(filter_add(handle, ip, child_classid, root_container_id))
+
         init_container(worker_count)
         for command in commands:
-            command = f"docker exec {container_id} " + command
             print(command)
             sudo_run_and_get_result_or_error(command)
 
 
-def qdisc_del():
-    return f"tc qdisc del dev eth0 root"
+def qdisc_del(container_id):
+    return f"docker exec {container_id} tc qdisc del dev eth0 root"
 
 
-def qdisc_add(parent: str, handle: str):
-    return f"tc qdisc add dev eth0 parent {parent} handle {handle} htb default 22"
+def qdisc_add(parent: str, handle: str, container_id: str):
+    return f"docker exec {container_id} tc qdisc add dev eth0 parent {parent} handle {handle} htb default 22"
 
 
-def default_add(parent: str, x):
-    return f"tc class add dev eth0 parent {parent} classid {x}:22 htb rate 8000kbps ceil 8000kbps"
+def default_add(parent: str, x, container_id: str):
+    return f"docker exec {container_id} tc class add dev eth0 parent {parent} classid {x}:22 htb rate 99999kbps ceil 99999kbps"
 
 
-def class_add(parent: str, classid: str, limit: int):
-    return f"tc class add dev eth0 parent {parent} classid {classid} htb rate {limit}kbps ceil {limit}kbps"
+def class_add(parent: str, classid: str, limit: int, container_id: str):
+    return f"docker exec {container_id} tc class add dev eth0 parent {parent} classid {classid} htb rate {limit}kbps ceil {limit}kbps"
 
 
-def filter_add(parent: str, ip: str, flowid: str):
-    return f"tc filter add dev eth0 protocol ip parent {parent} prio 1 u32 match ip dst {ip} flowid {flowid}"
+def filter_add(parent: str, ip: str, flowid: str, container_id: str):
+    return f"docker exec {container_id} tc filter add dev eth0 protocol ip parent {parent} prio 1 u32 match ip dst {ip} flowid {flowid}"
 
 
 def init_container(worker_count):
@@ -214,7 +214,3 @@ def get_container_name_mapping(config_name: str):  # "worker_{id}" or "master"
         container_name = "/docker-spark_worker_{0}".format(worker_index)
 
     return get_container_id_by_name(container_name)
-
-
-if __name__ == '__main__':
-    apply_config("test2.yml")

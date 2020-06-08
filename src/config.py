@@ -9,3 +9,7 @@ influxdb_connection = "influxdb_connection"
 DOCKER_DIR = "../docker-spark"
 DOCKER_COMPOSE = DOCKER_DIR + "/docker-compose.yml"
 DOCKER_CONFIG_DIR = DOCKER_DIR + "/config"
+
+USERNAME = "houshaojie"
+
+BANDWHICH_DIR = f"/home/{USERNAME}/.cargo/bin/bandwhich"

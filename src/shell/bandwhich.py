@@ -1,6 +1,7 @@
 import threading
 from time import sleep
 
+from config import BANDWHICH_DIR
 from data.docker import dockerData
 from traffic_handler import handle_bandwhich
 from util.shell import sudo_run_and_get_realtime_result
@@ -19,7 +20,7 @@ def do_start_bandwhich_monitor():
         sleep(1)
     default_device = "br-{0}".format(dockerData.network_ids[0])
     print("start capturing traffic with bandwhich on device {0}".format(default_device))
-    command = "/home/houshaojie/.cargo/bin/bandwhich -n -r -i {0}".format(default_device)
+    command = f"{BANDWHICH_DIR} -n -r -i {default_device}"
     process = sudo_run_and_get_realtime_result(command)
     while True:
         output = process.stdout.readline()

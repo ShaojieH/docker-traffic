@@ -8,7 +8,7 @@ from data.docker import dockerData
 from scheduler import prepare
 from shell.docker import get_container_interface, get_container_ip2, get_container_name, get_container_id_by_ip
 from shell.docker_config import get_config_list, get_config, set_config, apply_config
-from shell.tc import get_qdisc_rule, reset, limit, limit_by_src_and_dst, get_class, get_filter, get_class_limit, \
+from shell.tc import get_qdisc_rule, reset, get_class, get_filter, get_class_limit, \
     get_filter_src
 from util.decorator import api_response
 from util.rule_apply import do_apply_simple_test, do_reset_simple_test, do_apply_complex_test, do_apply_simple, \
@@ -69,44 +69,11 @@ def api_get_container_list():
     return container_info
 
 
-@app.route('/container_info', methods=['GET'])
-@app.route('/', methods=['GET'])
-def get_container_info():
-    return render_template('container_info.html', container_info=api_get_container_list())
-
-
 @app.route('/api/container/reset', methods=['POST'])
 @api_response
 def api_reset_container_rule():
     interface = request.form['interface']
     return reset(interface)
-
-
-@app.route('/reset_container_rule', methods=['POST'])
-def reset_container_rule():
-    interface = request.form['interface']
-    reset(interface)
-    return redirect('/')
-
-
-@app.route('/set_container_rule', methods=['POST'])
-def set_container_rule():
-    interface = request.form['interface']
-    rate = request.form['rate']
-    burst = request.form['burst']
-    latency = request.form['latency']
-    reset(interface)  # first reset anyway
-    limit(interface=interface, rate=rate + "Mbit", burst=burst + "kb", latency=latency + "ms")
-    return redirect('/')
-
-
-@app.route('/add_container_rule', methods=['POST'])
-def add_container_rule():
-    src_container_id = request.form['src_container_id']
-    dst_container_id = request.form['dst_container_id']
-    limit = request.form['limit']
-    limit_by_src_and_dst(src_container_id=src_container_id, dst_container_id=dst_container_id, limit=limit)
-    return redirect('/')
 
 
 @app.route('/graph', methods=['GET'])
@@ -119,31 +86,15 @@ def api_get_docker_config_list():
     return {'configs': get_config_list()}
 
 
-@app.route('/config', methods=['GET'])
-def get_docker_config_list():
-    return render_template('docker_config_list.html', list_of_file=get_config_list())
-
-
 @app.route('/api/config/<filename>', methods=['GET'])
 def api_get_docker_config(filename):
     return get_config(filename)
-
-
-@app.route('/config/<filename>', methods=['GET'])
-def get_docker_config(filename):
-    return render_template('docker_config.html', docker_config=get_config(filename), filename=filename)
 
 
 @app.route('/config/<filename>', methods=['POST'])
 def save_docker_config(filename):
     set_config(filename, request.form['content'])
     return redirect('/config/{0}'.format(filename))
-
-
-@app.route('/config/apply/<filename>', methods=['POST'])
-def apply_docker_config(filename):
-    apply_config(filename)
-    return redirect('/graph')
 
 
 @app.route('/api/config/apply/<filename>', methods=['POST'])
