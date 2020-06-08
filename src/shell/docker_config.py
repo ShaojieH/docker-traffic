@@ -16,6 +16,7 @@ class TreeNode:
     name: str
     children: []
     limit: int
+    prio: int
     node_type: int
     x: int
     parent: str
@@ -26,6 +27,7 @@ class TreeNode:
         self.node_type = node_type
         self.children = []
         self.limit = 0
+        self.prio = 0
         self.parent = ""
         self.real_children = []
 
@@ -125,6 +127,7 @@ def apply_config(filename):
                 to_container = speed_limit['to_container']
                 node = root.find_by_name(to_container)
                 node.limit = speed_limit['limit']
+                node.prio = speed_limit['prio']
 
             x = 1
             for group in added_groups:
@@ -144,6 +147,7 @@ def apply_config(filename):
                         to_container = speed_limit['to_container']
                         if child.name == to_container:
                             limit = speed_limit['limit']
+                            prio = speed_limit['prio']
                             break
                     if not limit:
                         continue
@@ -151,7 +155,7 @@ def apply_config(filename):
                     child.parent = child_classid
                     child.class_id = child_classid
                     y = y + 1
-                    commands.append(class_add(class_id, child_classid, limit, root_container_id))
+                    commands.append(class_add(class_id, child_classid, limit, root_container_id, prio))
 
                     if get_node_type(child.name) == CONTAINER_TYPE:
                         container_id = get_container_name_mapping(child.name)
@@ -182,8 +186,8 @@ def default_add(parent: str, x, container_id: str):
     return f"docker exec {container_id} tc class add dev eth0 parent {parent} classid {x}:22 htb rate 99999kbps ceil 99999kbps"
 
 
-def class_add(parent: str, classid: str, limit: int, container_id: str):
-    return f"docker exec {container_id} tc class add dev eth0 parent {parent} classid {classid} htb rate {limit}kbps ceil {limit}kbps"
+def class_add(parent: str, classid: str, limit: int, container_id: str, prio=0):
+    return f"docker exec {container_id} tc class add dev eth0 parent {parent} classid {classid} htb rate {limit}kbps ceil {limit}kbps prio {prio}"
 
 
 def filter_add(parent: str, ip: str, flowid: str, container_id: str):
