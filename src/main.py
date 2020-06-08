@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template
 from flask import request
 from flask_cors import CORS
 
@@ -91,10 +91,10 @@ def api_get_docker_config(filename):
     return get_config(filename)
 
 
-@app.route('/config/<filename>', methods=['POST'])
-def save_docker_config(filename):
-    set_config(filename, request.form['content'])
-    return redirect('/config/{0}'.format(filename))
+@app.route('/api/config/save/<filename>', methods=['POST'])
+def api_save_docker_config(filename):
+    set_config(filename, request.args.get('config'))
+    return "success"
 
 
 @app.route('/api/config/apply/<filename>', methods=['POST'])
@@ -128,8 +128,8 @@ def api_reset_simple_test():
 def api_apply_simple():
     container = request.args.get('container')
     dst_ip = request.args.get('dst_ip')
-    limit = request.args.get('limit')
-    prio = request.args.get('prio')
+    limit = request.args.get('limit', default=0)
+    prio = request.args.get('prio', default=0)
     return do_apply_simple(container, dst_ip, limit, prio)
 
 
